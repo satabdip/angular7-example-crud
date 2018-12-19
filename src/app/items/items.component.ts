@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { Item } from '../item';
 
-
 @Component({
   selector: 'app-items',
   templateUrl: './items.component.html',

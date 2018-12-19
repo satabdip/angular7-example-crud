@@ -1,3 +1,37 @@
-<p>
-  item-add works!
-</p>
+<div class="example-container mat-elevation-z8">
+  <div class="example-loading-shade"
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/items']"><mat-icon>list</mat-icon></a>
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="itemForm" (ngSubmit)="onFormSubmit(itemForm.value)">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Item Name" formControlName="item_name"
+               [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!itemForm.get('item_name').valid && itemForm.get('item_name').touched">Please enter Item Name</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Item Desc" formControlName="item_desc"
+               [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!itemForm.get('item_desc').valid && itemForm.get('item_desc').touched">Please enter Item Description</span>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Item Price" formControlName="item_price"
+               [errorStateMatcher]="matcher">
+        <mat-error>
+          <span *ngIf="!itemForm.get('item_price').valid && itemForm.get('item_price').touched">Please enter Item Price</span>
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button type="submit" [disabled]="!itemForm.valid" mat-flat-button color="primary"><mat-icon>save</mat-icon></button>
+      </div>
+    </form>
+  </mat-card>
+</div>
